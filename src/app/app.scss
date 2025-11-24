@@ -1,40 +1,81 @@
-/* Toolbar principal */
+/* Barra de navegación principal */
 mat-toolbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 16px;
-  background: #1976d2; /* Azul Material más visible */
-  color: white;
+  background-color: #1976d2; /* azul Material */
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  font-size: 16px;
 }
 
-/* Links de navegación */
-a[mat-button] {
+/* Links desktop */
+.desktop-links {
+  display: flex;
+  gap: 16px;
+}
+
+.desktop-links a {
   color: white;
   text-decoration: none;
   font-weight: 500;
-  margin-right: 8px;
-  transition: background 0.2s;
-}
-
-a[mat-button]:hover {
-  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border: 1px solid transparent;
   border-radius: 4px;
+  transition: all 0.3s;
 }
 
-/* Separador para empujar el botón de cerrar sesión a la derecha */
+.desktop-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+}
+
+.active-link {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: white;
+}
+
+/* Botón logout desktop: botón HTML normal */
+.desktop-logout {
+  color: white; /* texto blanco seguro */
+  border: 1px solid white;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.desktop-logout:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Menú móvil */
+.mobile-menu {
+  display: none;
+}
+
+/* Espaciador */
 .spacer {
   flex: 1 1 auto;
 }
 
-/* Botón de cerrar sesión */
-button[mat-button] {
-  color: white;
-  font-weight: 500;
-  transition: background 0.2s;
+/* Responsive */
+@media (max-width: 768px) {
+  .desktop-links,
+  .desktop-logout {
+    display: none;
+  }
+  .mobile-menu {
+    display: inline-block;
+  }
 }
 
-button[mat-button]:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+/* Ajustes globales */
+html, body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  height: 100%;
 }

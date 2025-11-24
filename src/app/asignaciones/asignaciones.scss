@@ -1,17 +1,17 @@
-.mb-2 {
-  margin-bottom: 16px;
-}
-
-mat-card {
+.asignaciones-list {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 16px;
 }
 
-.row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
+.asignacion-card {
+  padding: 16px;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s;
 }
 
-.col {
-  flex: 1;
+.asignacion-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }

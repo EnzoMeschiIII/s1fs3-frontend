@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, Router } from '@angular/router';
-import { CommonModule, AsyncPipe } from '@angular/common';
+import { RouterOutlet, RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -12,22 +14,20 @@ import { AuthService } from './auth/auth.service';
     CommonModule,
     RouterOutlet,
     RouterLink,
+    RouterLinkActive, // para resaltar la ruta activa
     MatToolbarModule,
     MatButtonModule,
-    AsyncPipe
+    MatMenuModule,
+    MatIconModule
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
 export class AppComponent {
-  isLoggedIn$;
-
-  constructor(public auth: AuthService, private router: Router) {
-    this.isLoggedIn$ = this.auth.isLoggedIn$;
-  }
+  constructor(public auth: AuthService, private router: Router) {}
 
   logout() {
     this.auth.logout();
-    this.router.navigate(['/login']); // redirige al login
+    this.router.navigate(['/login']);
   }
 }

@@ -1,16 +1,10 @@
-<mat-toolbar color="primary">
-  Asignaciones
-</mat-toolbar>
+<h2>Asignaciones</h2>
 
-<div *ngFor="let a of asignaciones" class="mb-2">
-  <mat-card>
-    <div class="row">
-      <div class="col"><strong>ID:</strong> {{ a.id }}</div>
-      <div class="col"><strong>Usuario:</strong> {{ a.usuario }}</div>
-    </div>
-    <div class="row">
-      <div class="col"><strong>Laboratorio:</strong> {{ a.laboratorio }}</div>
-      <div class="col"><strong>Fecha:</strong> {{ a.fecha | date:'shortDate' }}</div>
-    </div>
+<div class="asignaciones-list">
+  <mat-card *ngFor="let a of asignaciones" class="asignacion-card">
+    <div><strong>ID:</strong> {{ a.id }}</div>
+    <div><strong>Usuario:</strong> {{ a.usuario }}</div>
+    <div><strong>Laboratorio:</strong> {{ a.laboratorio }}</div>
+    <div><strong>Fecha:</strong> {{ a.fecha | date:'shortDate' }}</div>
   </mat-card>
 </div>

@@ -1,16 +1,9 @@
-<mat-toolbar color="primary">
-  Laboratorios
-</mat-toolbar>
+<h2>Laboratorios</h2>
 
-<div *ngFor="let l of laboratorios" class="mb-2">
-  <mat-card>
-    <div class="row">
-      <div class="col"><strong>ID:</strong> {{ l.id }}</div>
-      <div class="col"><strong>Nombre:</strong> {{ l.nombre }}</div>
-    </div>
-    <div class="row">
-      <div class="col"><strong>Capacidad:</strong> {{ l.capacidad }}</div>
-      <div class="col"><strong>Ubicación:</strong> {{ l.ubicacion }}</div>
-    </div>
+<div class="laboratorios-list">
+  <mat-card *ngFor="let l of laboratorios" class="laboratorio-card">
+    <div><strong>ID:</strong> {{ l.id }}</div>
+    <div><strong>Nombre:</strong> {{ l.nombre }}</div>
+    <div><strong>Ubicación:</strong> {{ l.ubicacion }}</div>
   </mat-card>
 </div>

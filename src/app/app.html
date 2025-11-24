@@ -1,11 +1,28 @@
-<ng-container *ngIf="isLoggedIn$ | async">
-  <mat-toolbar color="primary">
-    <a mat-button [routerLink]="['/usuarios']">Usuarios</a>
-    <a mat-button [routerLink]="['/laboratorios']">Laboratorios</a>
-    <a mat-button [routerLink]="['/asignaciones']">Asignaciones</a>
-    <span class="spacer"></span>
-    <button mat-button (click)="logout()">Cerrar Sesión</button>
-  </mat-toolbar>
-</ng-container>
+<mat-toolbar color="primary" *ngIf="auth.isLoggedIn$ | async">
+  <!-- Links desktop -->
+  <div class="desktop-links">
+    <a mat-button [routerLink]="['/usuarios']" routerLinkActive="active-link">Usuarios</a>
+    <a mat-button [routerLink]="['/laboratorios']" routerLinkActive="active-link">Laboratorios</a>
+    <a mat-button [routerLink]="['/asignaciones']" routerLinkActive="active-link">Asignaciones</a>
+  </div>
+
+  <span class="spacer"></span>
+
+  <!-- Menú móvil -->
+  <div class="mobile-menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [routerLink]="['/usuarios']">Usuarios</button>
+      <button mat-menu-item [routerLink]="['/laboratorios']">Laboratorios</button>
+      <button mat-menu-item [routerLink]="['/asignaciones']">Asignaciones</button>
+      <button mat-menu-item (click)="logout()">Cerrar Sesión</button>
+    </mat-menu>
+  </div>
+
+  <!-- Logout desktop: botón HTML normal -->
+  <button class="desktop-logout" (click)="logout()">Cerrar Sesión</button>
+</mat-toolbar>
 
 <router-outlet></router-outlet>

@@ -22,4 +22,14 @@ export class AuthService {
   logout() {
     this._isLoggedIn.next(false);
   }
+
+  // Nuevo getter para usar en templates sin async pipe
+  isLoggedIn(): boolean {
+    return this._isLoggedIn.getValue();
+  }
+
+  // Opcional: para obtener el usuario logueado
+  getUsuario() {
+    return this._isLoggedIn.getValue() ? this.usuario : null;
+  }
 }
