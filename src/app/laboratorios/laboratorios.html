@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  Laboratorios
+</mat-toolbar>
+
+<div *ngFor="let l of laboratorios" class="mb-2">
+  <mat-card>
+    <div class="row">
+      <div class="col"><strong>ID:</strong> {{ l.id }}</div>
+      <div class="col"><strong>Nombre:</strong> {{ l.nombre }}</div>
+    </div>
+    <div class="row">
+      <div class="col"><strong>Capacidad:</strong> {{ l.capacidad }}</div>
+      <div class="col"><strong>Ubicación:</strong> {{ l.ubicacion }}</div>
+    </div>
+  </mat-card>
+</div>

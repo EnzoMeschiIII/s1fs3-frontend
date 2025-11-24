@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  Usuarios
+</mat-toolbar>
+
+<div *ngFor="let u of usuarios" class="mb-2">
+  <mat-card>
+    <div class="row">
+      <div class="col"><strong>ID:</strong> {{ u.id }}</div>
+      <div class="col"><strong>Nombre:</strong> {{ u.nombre }}</div>
+    </div>
+    <div class="row">
+      <div class="col"><strong>Email:</strong> {{ u.email }}</div>
+      <div class="col"><strong>Rol:</strong> {{ u.rol }}</div>
+    </div>
+  </mat-card>
+</div>

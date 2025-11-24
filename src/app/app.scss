@@ -1,0 +1,40 @@
+/* Toolbar principal */
+mat-toolbar {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  background: #1976d2; /* Azul Material más visible */
+  color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Links de navegación */
+a[mat-button] {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  margin-right: 8px;
+  transition: background 0.2s;
+}
+
+a[mat-button]:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+/* Separador para empujar el botón de cerrar sesión a la derecha */
+.spacer {
+  flex: 1 1 auto;
+}
+
+/* Botón de cerrar sesión */
+button[mat-button] {
+  color: white;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+button[mat-button]:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
