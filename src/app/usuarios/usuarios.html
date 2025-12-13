@@ -1,5 +1,8 @@
 <h2>Usuarios</h2>
-
+<button routerLink="/usuarios/crud">
+  Crear nuevo usuario
+</button>
+<hr>
 <div class="usuarios-list">
   <mat-card *ngFor="let u of usuarios" class="usuario-card">
     <div><strong>ID:</strong> {{ u.id }}</div>

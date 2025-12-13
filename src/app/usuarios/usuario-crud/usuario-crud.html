@@ -1,0 +1,14 @@
+<h2>Crear Usuario</h2>
+
+<form [formGroup]="form" (ngSubmit)="crear()">
+  <input placeholder="Nombre" formControlName="nombre"><br><br>
+  <input placeholder="Email" formControlName="email"><br><br>
+  <input placeholder="Clave" type="password" formControlName="clave"><br><br>
+
+  <select formControlName="rol">
+    <option value="usuario">Usuario</option>
+    <option value="admin">Admin</option>
+  </select><br><br>
+
+  <button type="submit">Guardar</button>
+</form>
