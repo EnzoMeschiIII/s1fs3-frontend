@@ -1,13 +1,25 @@
 <h2>Usuarios</h2>
-<button routerLink="/usuarios/crud">
-  Crear nuevo usuario
-</button>
-<hr>
-<div class="usuarios-list">
-  <mat-card *ngFor="let u of usuarios" class="usuario-card">
-    <div><strong>ID:</strong> {{ u.id }}</div>
-    <div><strong>Nombre:</strong> {{ u.nombre }}</div>
-    <div><strong>Email:</strong> {{ u.email }}</div>
-    <div><strong>Rol:</strong> {{ u.rol }}</div>
-  </mat-card>
-</div>
+
+<table border="1" width="100%">
+  <tr>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Rol</th>
+    <th>Acciones</th>
+  </tr>
+
+  <tr *ngFor="let u of usuarios">
+    <td>{{ u.nombre }}</td>
+    <td>{{ u.email }}</td>
+    <td>{{ u.rol }}</td>
+    <td>
+      <button (click)="editar(u.id!)">✏️</button>
+      <button (click)="eliminar(u.id!)">🗑</button>
+    </td>
+  </tr>
+</table>
+
+<br>
+
+<button (click)="irACrear()">Crear usuario</button>
+<button (click)="cargarUsuarios()">Actualizar lista</button>

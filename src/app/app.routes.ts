@@ -12,6 +12,8 @@ export const routes: Routes = [
   { path: 'login', component: Login },
   { path: 'usuarios', component: Usuarios },
   { path: 'usuarios/crud', component: UsuarioCrud },
+  { path: 'usuarios/editar/:id', component: UsuarioCrud },
+  { path: 'usuarios/crear', component: UsuarioCrud },
   { path: 'laboratorios', component: Laboratorios },
   { path: 'asignaciones', component: Asignaciones },
   { path: '**', redirectTo: 'login' }

@@ -23,4 +23,13 @@ export class UsuariosService {
   eliminar(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  obtenerPorId(id: number) {
+  return this.http.get<Usuario>(`${this.apiUrl}/${id}`);
+}
+
+actualizar(id: number, usuario: Usuario) {
+  return this.http.put<Usuario>(`${this.apiUrl}/${id}`, usuario);
+}
+
 }

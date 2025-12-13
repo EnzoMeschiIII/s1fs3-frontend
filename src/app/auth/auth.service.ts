@@ -1,35 +1,25 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { Usuario } from '../usuarios/usuario-crud/usuarios.model';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  private _isLoggedIn = new BehaviorSubject<boolean>(false);
-  isLoggedIn$ = this._isLoggedIn.asObservable();
 
-  // Usuario simulado
-  private usuario = { id: 3, nombre: 'adm', email: 'adm@adm.cl', rol: 'admin' };
+  private apiUrl = 'http://localhost:8081/api/usuarios/login';
+  private loggedIn$ = new BehaviorSubject<boolean>(false);
 
-  login(email: string) {
-    if (email === this.usuario.email) {
-      this._isLoggedIn.next(true);
-      return true;
-    }
-    return false;
+  isLoggedIn$ = this.loggedIn$.asObservable();
+
+  constructor(private http: HttpClient) {}
+
+  login(email: string, clave: string): Observable<Usuario> {
+    return this.http.post<Usuario>(this.apiUrl, { email, clave }).pipe(
+      tap(() => this.loggedIn$.next(true))
+    );
   }
 
   logout() {
-    this._isLoggedIn.next(false);
-  }
-
-  // Nuevo getter para usar en templates sin async pipe
-  isLoggedIn(): boolean {
-    return this._isLoggedIn.getValue();
-  }
-
-  // Opcional: para obtener el usuario logueado
-  getUsuario() {
-    return this._isLoggedIn.getValue() ? this.usuario : null;
+    this.loggedIn$.next(false);
   }
 }
