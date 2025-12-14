@@ -10,8 +10,63 @@
   font-size: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s;
+  border-radius: 6px;
 }
 
 .usuario-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
+
+.usuario-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* Contenedor de acciones */
+.usuarios-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+/* Botones tipo card */
+.action-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Hover */
+.action-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: translateY(-1px);
+}
+
+/* Variantes */
+.action-card.primary {
+  border-left: 5px solid #1976d2;
+}
+
+.action-card.secondary {
+  border-left: 5px solid #388e3c;
+}
+
+/* Responsive extra */
+@media (max-width: 600px) {
+  .action-card {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+

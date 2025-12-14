@@ -1,25 +1,30 @@
-<h2>Usuarios</h2>
+<h2 style="padding: 16px;">Usuarios</h2>
 
-<table border="1" width="100%">
-  <tr>
-    <th>Nombre</th>
-    <th>Email</th>
-    <th>Rol</th>
-    <th>Acciones</th>
-  </tr>
+<div class="usuarios-actions">
+  <button class="action-card primary" (click)="irACrear()">
+    ➕ Crear usuario
+  </button>
 
-  <tr *ngFor="let u of usuarios">
-    <td>{{ u.nombre }}</td>
-    <td>{{ u.email }}</td>
-    <td>{{ u.rol }}</td>
-    <td>
-      <button (click)="editar(u.id!)">✏️</button>
-      <button (click)="eliminar(u.id!)">🗑</button>
-    </td>
-  </tr>
-</table>
+  <button class="action-card secondary" (click)="cargarUsuarios()">
+    🔄 Actualizar lista
+  </button>
+</div>
 
-<br>
 
-<button (click)="irACrear()">Crear usuario</button>
-<button (click)="cargarUsuarios()">Actualizar lista</button>
+<div class="usuarios-list">
+  <div class="usuario-card" *ngFor="let u of usuarios">
+    <strong>{{ u.nombre }}</strong>
+    <p>{{ u.email }}</p>
+    <p>Rol: {{ u.rol }}</p>
+
+    <div class="usuario-actions">
+      <button mat-icon-button color="primary" (click)="editar(u.id!)">
+        ✏️
+      </button>
+
+      <button mat-icon-button color="warn" (click)="eliminar(u.id!)">
+        🗑
+      </button>
+    </div>
+  </div>
+</div>

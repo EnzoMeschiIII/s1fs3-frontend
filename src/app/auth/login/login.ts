@@ -14,12 +14,15 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+
+    // Material
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule
   ],
-  templateUrl: './login.html'
+  templateUrl: './login.html',
+  styleUrls: ['./login.scss']  
 })
 export class Login {
 

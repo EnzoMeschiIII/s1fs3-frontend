@@ -1,29 +1,32 @@
-<mat-card class="login-card">
-  <h2>Login</h2>
+<div class="login-page">
 
-  <form [formGroup]="form" (ngSubmit)="enviar()" class="login-form">
+  <mat-card class="login-card">
+    <h2>Login</h2>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Correo</mat-label>
-      <input matInput type="email" formControlName="email">
-      <mat-error *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
-        Email inválido
-      </mat-error>
-    </mat-form-field>
+    <form [formGroup]="form" (ngSubmit)="enviar()" class="login-form">
 
-    <mat-form-field appearance="fill">
-      <mat-label>Clave</mat-label>
-      <input matInput type="password" formControlName="clave">
-      <mat-error *ngIf="form.controls['clave'].invalid && form.controls['clave'].touched">
-        La clave debe tener mínimo 6 caracteres
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Correo</mat-label>
+        <input matInput type="email" formControlName="email">
+        <mat-error *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+          Email inválido
+        </mat-error>
+      </mat-form-field>
 
-    <div *ngIf="error" class="error">{{ error }}</div>
+      <mat-form-field appearance="fill">
+        <mat-label>Clave</mat-label>
+        <input matInput type="password" formControlName="clave">
+        <mat-error *ngIf="form.controls['clave'].invalid && form.controls['clave'].touched">
+          La clave debe tener mínimo 6 caracteres
+        </mat-error>
+      </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
-      Entrar
-    </button>
+      <div *ngIf="error" class="error">{{ error }}</div>
 
-  </form>
-</mat-card>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Entrar
+      </button>
+    </form>
+  </mat-card>
+
+</div>

@@ -8,7 +8,8 @@ import { Usuario } from './usuario-crud/usuarios.model';
   standalone: true,
   selector: 'app-usuarios',
   imports: [CommonModule],
-  templateUrl: './usuarios.html'
+  templateUrl: './usuarios.html',
+  styleUrls: ['./usuarios.scss']
 })
 export class Usuarios {
 

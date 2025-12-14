@@ -1,0 +1,30 @@
+<div class="usuario-form-container">
+  <h2>{{ asignacion ? 'Editar asignación' : 'Crear asignación' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="usuario-form">
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <mat-select formControlName="idUsuario">
+        <mat-option *ngFor="let u of usuarios" [value]="u.id">{{ u.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Laboratorio</mat-label>
+      <mat-select formControlName="idLaboratorio">
+        <mat-option *ngFor="let l of laboratorios" [value]="l.id">{{ l.nombre }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-stroked-button type="button" (click)="cancelar()">
+        Cancelar
+      </button>
+
+      <button mat-raised-button color="primary" type="submit">
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

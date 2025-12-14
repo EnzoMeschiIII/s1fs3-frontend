@@ -1,10 +1,29 @@
-<h2>Asignaciones</h2>
+<h2 style="padding: 16px;">Asignaciones</h2>
 
-<div class="asignaciones-list">
-  <mat-card *ngFor="let a of asignaciones" class="asignacion-card">
-    <div><strong>ID:</strong> {{ a.id }}</div>
-    <div><strong>Usuario:</strong> {{ a.usuario }}</div>
-    <div><strong>Laboratorio:</strong> {{ a.laboratorio }}</div>
-    <div><strong>Fecha:</strong> {{ a.fecha | date:'shortDate' }}</div>
-  </mat-card>
+<div class="usuarios-actions">
+  <button class="action-card primary" (click)="abrirFormulario()">
+    ➕ Crear asignación
+  </button>
+
+  <button class="action-card secondary" (click)="cargarAsignaciones()">
+    🔄 Actualizar lista
+  </button>
+</div>
+
+<div class="usuarios-list">
+  <div class="usuario-card" *ngFor="let a of asignaciones">
+    <strong>Usuario: {{ a.usuario }}</strong>
+    <p>Laboratorio: {{ a.laboratorio }}</p>
+    <p>Fecha: {{ a.fechaAsignacion | date:'shortDate' }}</p>
+
+    <div class="usuario-actions">
+      <button mat-icon-button color="primary" (click)="editar(a)">
+        ✏️
+      </button>
+
+      <button mat-icon-button color="warn" (click)="eliminar(a.id!)">
+        🗑
+      </button>
+    </div>
+  </div>
 </div>

@@ -1,15 +1,39 @@
-<h2>{{ id ? 'Editar Usuario' : 'Crear Usuario' }}</h2>
+<div class="usuario-form-container">
+  <h2>{{ esEdicion ? 'Editar usuario' : 'Crear usuario' }}</h2>
 
-<form [formGroup]="form" (ngSubmit)="guardar()">
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="usuario-form">
 
-  <input formControlName="nombre" placeholder="Nombre" />
-  <input formControlName="email" placeholder="Email" />
-  <input type="password" formControlName="clave" placeholder="Clave" />
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+    </mat-form-field>
 
-  <select formControlName="rol">
-    <option value="usuario">Usuario</option>
-    <option value="admin">Admin</option>
-  </select>
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+    </mat-form-field>
 
-  <button type="submit">Guardar</button>
-</form>
+    <mat-form-field appearance="fill">
+      <mat-label>Clave</mat-label>
+      <input matInput type="password" formControlName="clave">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="rol">
+        <mat-option value="usuario">Usuario</mat-option>
+        <mat-option value="admin">Admin</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-stroked-button type="button" (click)="volver()">
+        Cancelar
+      </button>
+
+      <button mat-raised-button color="primary" type="submit">
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

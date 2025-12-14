@@ -1,17 +1,66 @@
-.asignaciones-list {
+.usuarios-list {
   display: grid;
   gap: 16px;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   padding: 16px;
 }
 
-.asignacion-card {
+.usuario-card {
   padding: 16px;
   font-size: 14px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   transition: box-shadow 0.3s;
+  border-radius: 6px;
 }
 
-.asignacion-card:hover {
+.usuario-card:hover {
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.usuario-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.usuarios-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.action-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.action-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transform: translateY(-1px);
+}
+
+.action-card.primary {
+  border-left: 5px solid #1976d2;
+}
+
+.action-card.secondary {
+  border-left: 5px solid #388e3c;
+}
+
+@media (max-width: 600px) {
+  .action-card {
+    font-size: 14px;
+    padding: 12px;
+  }
 }
