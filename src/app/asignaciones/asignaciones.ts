@@ -71,16 +71,17 @@ export class Asignaciones implements OnInit {
     });
   }
 
-  abrirFormulario(asignacion?: Asignacion) {
-    const dialogRef = this.dialog.open(AsignacionCrudComponent, {
-      width: '400px',
-      data: { asignacion: asignacion || null }
-    });
+abrirFormulario(asignacion?: Asignacion) {
+  const dialogRef = this.dialog.open(AsignacionCrudComponent, {
+    width: '400px',
+    data: { asignacion: asignacion || null }
+  });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) this.cargarAsignaciones();
-    });
-  }
+  dialogRef.afterClosed().subscribe(result => {
+    if (result) this.cargarAsignaciones(); // refresca la lista si se guardó algo
+  });
+}
+
 
   editar(asignacion: Asignacion) {
     this.abrirFormulario(asignacion);

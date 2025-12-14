@@ -1,20 +1,31 @@
-<div class="usuario-form-container">
-  <h2>{{ asignacion ? 'Editar asignación' : 'Crear asignación' }}</h2>
+<div class="asignacion-form-container">
+  <h2>{{ esEdicion ? 'Editar asignación' : 'Crear asignación' }}</h2>
 
-  <form [formGroup]="form" (ngSubmit)="guardar()" class="usuario-form">
-    
+  <form [formGroup]="form" (ngSubmit)="guardar()" class="asignacion-form">
+
     <mat-form-field appearance="fill">
       <mat-label>Usuario</mat-label>
       <mat-select formControlName="idUsuario">
-        <mat-option *ngFor="let u of usuarios" [value]="u.id">{{ u.nombre }}</mat-option>
+        <mat-option *ngFor="let u of usuarios" [value]="u.id">
+          {{ u.nombre }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>Laboratorio</mat-label>
       <mat-select formControlName="idLaboratorio">
-        <mat-option *ngFor="let l of laboratorios" [value]="l.id">{{ l.nombre }}</mat-option>
+        <mat-option *ngFor="let l of laboratorios" [value]="l.id">
+          {{ l.nombre }}
+        </mat-option>
       </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de asignación</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaAsignacion">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <div class="form-actions">
