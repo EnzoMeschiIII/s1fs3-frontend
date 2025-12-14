@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidationErrors } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -47,7 +47,7 @@ export class AsignacionCrudComponent implements OnInit {
     this.form = this.fb.group({
       idUsuario: [null, Validators.required],
       idLaboratorio: [null, Validators.required],
-      fechaAsignacion: [new Date(), Validators.required]
+      fechaAsignacion: [new Date(), [Validators.required, this.fechaNoAnteriorValidator]]
     });
 
     this.cargarUsuarios();
@@ -74,6 +74,17 @@ export class AsignacionCrudComponent implements OnInit {
     });
   }
 
+  // --- Validación personalizada: fecha no puede ser anterior a hoy ---
+  fechaNoAnteriorValidator(control: AbstractControl): ValidationErrors | null {
+    const fecha = new Date(control.value);
+    const hoy = new Date();
+    hoy.setHours(0,0,0,0); // Ignora horas para comparar solo fechas
+    if (fecha < hoy) {
+      return { fechaAnterior: true };
+    }
+    return null;
+  }
+
   guardar() {
     if (this.form.invalid) return;
 
@@ -81,16 +92,16 @@ export class AsignacionCrudComponent implements OnInit {
 
     if (this.esEdicion && this.asignacionId) {
       this.service.actualizar(this.asignacionId, asignacion).subscribe(() => {
-        this.dialogRef.close(true); // <-- cerrar diálogo y notificar actualización
+        this.dialogRef.close(true);
       });
     } else {
       this.service.crear(asignacion).subscribe(() => {
-        this.dialogRef.close(true); // <-- cerrar diálogo
+        this.dialogRef.close(true);
       });
     }
   }
 
   cancelar() {
-    this.dialogRef.close(false); // <-- cerrar diálogo
+    this.dialogRef.close(false);
   }
 }

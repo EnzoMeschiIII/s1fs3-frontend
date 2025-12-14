@@ -42,9 +42,9 @@ export class UsuarioCrud implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      nombre: ['', Validators.required],
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      clave: ['', Validators.required],
+      clave: ['', [Validators.required, Validators.minLength(6)]],
       rol: ['usuario', Validators.required]
     });
 
