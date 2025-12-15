@@ -3,16 +3,15 @@ import { TestBed } from '@angular/core/testing';
 
 @Component({
   selector: 'app-root',
-  template: '' // nada de HTML ni dependencias
+  standalone: true,
+  template: '',
 })
-class AppComponentStub {
-  logout = () => {};
-}
+class AppComponentStub {}
 
 describe('AppComponent minimal', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [AppComponentStub],
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponentStub], 
     }).compileComponents();
   });
 
